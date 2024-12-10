@@ -1,0 +1,97 @@
+>>>show boot*
+boot_dev
+boot_file
+boot_osflags            0,0
+boot_reset              OFF
+bootbios
+bootdef_dev
+booted_dev
+booted_file
+booted_osflags
+>>>show config
+                           hp AlphaServer DS15
+
+Firmware
+SRM Console:    V7.3-2
+PALcode:        OpenVMS PALcode V1.98-7, Tru64 UNIX PALcode V1.92-7
+SROM Extended:          V1.0-1
+SROM Fail Safe:         V1.0-0
+RMC Runtime:            V1.2-0
+RMC Booter:             V1.1-0
+
+Processors
+CPU 0           Alpha EV68CB pass 4.0 1000 MHz  2MB Bcache
+
+Core Logic
+Cchip           Rev 18
+Dchip           Rev 17
+PPchip 0        Rev 17
+TIG             Rev 1.11
+Acer Chip Revision A1-E
+
+Memory
+  Array       Size       Base Address    Intlv Mode
+---------  ----------  ----------------  ----------
+    0       2048Mb     0000000000000000    2-Way
+    2       2048Mb     0000000080000000    2-Way
+
+     4096 MB of System Memory
+
+ Slot   Option                  Hose 0, Bus 0, PCI - 33 MHz
+   7    Acer Labs M1543C                                Bridge to Bus 1, ISA
+   8/0  Adaptec AIC-7899        pka0.7.0.8.0            SCSI Bus ID 7
+   8/1  Adaptec AIC-7899        pkb0.7.0.108.0          SCSI Bus ID 7
+   9    Intel 82559ER Ethern    eia0.0.0.9.0            00-17-A4-52-21-37
+  10    Intel 82559ER Ethern    eib0.0.0.10.0           00-17-A4-52-21-36
+  13    Acer Labs M1543C IDE    dqa.0.0.13.0
+                                dqb.0.1.13.0
+                                dqa0.0.0.13.0           HL-DT-ST RW/DVD GCC-4481
+
+        Option                  Hose 0, Bus 1, ISA
+        Floppy                  dva0.0.0.1000.0
+
+ Slot   Option                  Hose 2, Bus 0, PCI - 33 MHz
+   7/0  DEGX2-TA Gigabit Eth    ega0.0.0.7.2            00-10-18-0A-09-CD
+   7/1  DEGX2-TA Gigabit Eth    egb0.0.0.107.2          00-10-18-0A-09-CC
+  10    47521002/80081002
+
+
+SROM loads from Flash
+Console loads from SRM
+Flash updates are Enabled for RMC
+Flash updates are Enabled for SRM
+Flash updates are Enabled for FailSafe
+Flash updates are Disabled for RMC Booter
+Halt/Reset is set to HALT
+>>>show device
+dqa0.0.0.13.0              DQA0       HL-DT-ST RW/DVD GCC-4481  2.05
+dva0.0.0.1000.0            DVA0
+ega0.0.0.7.2               EGA0              00-10-18-0A-09-CD
+egb0.0.0.107.2             EGB0              00-10-18-0A-09-CC
+eia0.0.0.9.0               EIA0              00-17-A4-52-21-37
+eib0.0.0.10.0              EIB0              00-17-A4-52-21-36
+pka0.7.0.8.0               PKA0                  SCSI Bus ID 7
+pkb0.7.0.108.0             PKB0                  SCSI Bus ID 7
+>>>show fru
+FRUname         E   Part#              Serial#    Model/Other Alias/Misc
+HMB             00 54-30558-03.B3      JA73000503       -
+HMB.DIMM0.J14   00 20-00FBA-E9     HP  2140cf77         216b        4a
+HMB.DIMM1.J12   00 20-00FBA-E9     HP  2140cfd7         216b        4a
+HMB.DIMM2.J15   00 20-00FBA-E9     HP  21404f3b         216b        4a
+HMB.DIMM3.J13   00 20-00FBA-E9     HP  2140cf07         216b        4a
+HMB.PCIRSR      00 54-30560-01.A1      JA44102476       -
+HMB.PCIRSR.PCI  00                                     DEGX2-TA G
+HMB.PCIRSR.PCI  00                                     47521002/8
+PWR0            00 30-10005-0-         -               PS
+SYS FAN         00 12-10010-01                         FAN         J3
+PCI FAN         00 12-49806-04                         FAN         J1
+CPU FAN         00 12-56450-01                         FAN         J32
+DISK FAN        00 12-45971-04                         FAN         J31
+>>>show memory
+  Array       Size       Base Address    Intlv Mode
+---------  ----------  ----------------  ----------
+    0       2048Mb     0000000000000000    2-Way
+    2       2048Mb     0000000080000000    2-Way
+
+     4096 MB of System Memory
+>>>

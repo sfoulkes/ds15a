@@ -1,0 +1,171 @@
+   7/0  DEGX2-TA Gigabit Eth    ega0.0.0.7.2            00-10-18-0A-09-CD
+
+>>>show boot*
+boot_dev                ega0.0.0.7.2
+boot_file
+boot_osflags            0,0
+boot_reset              OFF
+bootbios
+bootdef_dev
+booted_dev
+booted_file
+booted_osflags
+
+>>>show ega*
+ega0_arp_tries          3
+ega0_bootp_file
+ega0_bootp_server
+ega0_bootp_tries        3
+ega0_def_ginetaddr      0.0.0.0
+ega0_def_inetaddr       0.0.0.0
+ega0_def_inetfile
+ega0_def_sinetaddr      0.0.0.0
+ega0_def_subnetmask     0.0.0.0
+ega0_ginetaddr          0.0.0.0
+ega0_inet_init          bootp
+ega0_inetaddr           0.0.0.0
+ega0_inetfile
+ega0_loop_count         4
+ega0_loop_inc           d0
+ega0_loop_patt          ffffffffffffffff
+ega0_loop_size          100
+ega0_lp_msg_node        6
+ega0.0.0.7.2: Link up: 1000 mbit, full duplex
+ega0_mode               auto
+ega0_protocols          MOP
+ega0_sinetaddr          0.0.0.0
+ega0_tftp_blocksize     1024
+ega0_tftp_tries         3
+>>>
+
+Changed the protocol for the interface I'm booting off of to bootp:
+
+>>>set ega0_protocols bootp
+>>>show ega*
+ega0_arp_tries          3
+ega0_bootp_file
+ega0_bootp_server
+ega0_bootp_tries        3
+ega0_def_ginetaddr      0.0.0.0
+ega0_def_inetaddr       0.0.0.0
+ega0_def_inetfile
+ega0_def_sinetaddr      0.0.0.0
+ega0_def_subnetmask     0.0.0.0
+ega0_ginetaddr          0.0.0.0
+ega0_inet_init          bootp
+ega0_inetaddr           0.0.0.0
+ega0_inetfile
+ega0_loop_count         4
+ega0_loop_inc           d0
+ega0_loop_patt          ffffffffffffffff
+ega0_loop_size          100
+ega0_lp_msg_node        6
+ega0.0.0.7.2: Link up: 1000 mbit, full duplex
+ega0_mode               auto
+ega0_protocols          BOOTP
+ega0_sinetaddr          0.0.0.0
+ega0_tftp_blocksize     1024
+ega0_tftp_tries         3
+ega_protocols           bootp
+
+Tried booting:
+>>>boot ega0
+(boot ega0.0.0.7.2 -flags 0,0)
+
+Trying BOOTP boot.
+
+Broadcasting BOOTP Request...
+..file open failed for bootp/ega0.0.0.7.2
+bootstrap failure
+
+Retrying, type ^C to abort...
+
+BOOTP server sees the request but isn't configured:
+
+Feb 24 14:37:25 central dnsmasq-dhcp[7513]: 2628339399 available DHCP range: 192.168.50.20 -- 192.168.50.199
+Feb 24 14:37:28 central dnsmasq-dhcp[7513]: 2628339399 tags: bootp, eth0
+Feb 24 14:37:28 central dnsmasq-dhcp[7513]: 2628339399 BOOTP(eth0) 00:10:18:0a:09:cd no address configured
+
+Update the dnsmasq config to specifc a static IP for my machine:
+
+dhcp-host=00:10:18:0a:09:cd,192.168.50.10,alpha
+
+Booted:
+
+>>>boot ega0
+(boot ega0.0.0.7.2 -flags 0,0)
+
+Trying BOOTP boot.
+
+Broadcasting BOOTP Request...
+Received BOOTP Packet File Name is:
+local inet address: 192.168.50.10
+remote inet address: 192.168.50.2
+TFTP Read File Name:
+netmask = 255.255.255.0
+Server is on same subnet as client.
+Tftp error 4: unsupported request from 192.168.50.10.
+bootstrap failure
+
+See the request get farther:
+
+Feb 24 14:47:58 central dnsmasq-dhcp[12793]: 2118996205 available DHCP range: 192.168.50.20 -- 192.168.50.199
+Feb 24 14:47:58 central dnsmasq-dhcp[12793]: 2118996205 tags: bootp, known, eth0
+Feb 24 14:47:58 central dnsmasq-dhcp[12793]: 2118996205 BOOTP(eth0) 192.168.50.10 00:10:18:0a:09:cd
+Feb 24 14:47:58 central dnsmasq-dhcp[12793]: 2118996205 next server: 192.168.50.2
+Feb 24 14:47:58 central dnsmasq-dhcp[12793]: 2118996205 sent size:  4 option:  1 netmask  255.255.255.0
+Feb 24 14:47:58 central dnsmasq-dhcp[12793]: 2118996205 sent size:  4 option: 28 broadcast  192.168.50.255
+Feb 24 14:47:58 central dnsmasq-dhcp[12793]: 2118996205 sent size:  4 option:  6 dns-server  192.168.50.2
+Feb 24 14:47:58 central dnsmasq-dhcp[12793]: 2118996205 sent size:  5 option: 12 hostname  alpha
+Feb 24 14:47:58 central dnsmasq-dhcp[12793]: 2118996205 sent size:  4 option:  3 router  192.168.50.1
+Feb 24 14:47:59 central dnsmasq-tftp[12793]: unsupported request from 192.168.50.10
+
+There are a couple of interesting files on the gentoo live boot CD:
+[sfoulkes@zombiejesus boot]$ ls -l
+total 27977
+-rwxr-xr-x. 1 root root   80896 Feb 29  2008 bootlx
+-rw-r--r--. 1 root root 6126446 Feb  4 21:06 gentoo
+-rw-r--r--. 1 root root   75594 Feb  4 21:00 gentoo-config
+-rw-r--r--. 1 root root 6302936 Feb  4 21:23 gentoo.igz
+-rw-r--r--. 1 root root 6195924 Feb  4 21:29 gentoo_nolsa
+-rw-r--r--. 1 root root   75605 Feb  4 21:24 gentoo_nolsa-config
+-rw-r--r--. 1 root root 6295280 Feb  4 21:46 gentoo_nolsa.igz
+-rw-r--r--. 1 root root 1742384 Feb  4 21:06 System-gentoo.map
+-rw-r--r--. 1 root root 1750776 Feb  4 21:29 System-gentoo_nolsa.map
+[sfoulkes@zombiejesus boot]$
+
+I believe that bootlx is the bootloader and gentoo is the kernel:
+[sfoulkes@zombiejesus boot]$ file bootlx
+bootlx: data
+[sfoulkes@zombiejesus boot]$ file gentoo
+gentoo: gzip compressed data, from Unix, max compression
+[sfoulkes@zombiejesus boot]$
+
+Updated dnsmasq config to specify a TFTP filename:
+dhcp-boot=bootlx
+
+Copied bootlx into /var/ftpd and tried to boot:
+8000000000000000
+aboot: read of disklabel sector failed (nread=-1)
+ext2 sb read failed
+iso_read_super: bread failed, dev iso_blknum 16
+ufs_mount: superblock read failed (retval=-9223372036854775808)
+aboot: unknown filesystem type
+aboot: mount of partition 1 failed
+Welcome to aboot 1.0_pre20040408
+Commands:
+ h, ?                   Display this message
+ q                      Halt the system and return to SRM
+ p 1-8                  Look in partition <num> for configuration/kernel
+ l                      List preconfigured kernels
+ d <dir>                List directory <dir> in current filesystem
+ b <file> <args>        Boot kernel in <file> (- for raw boot)
+ i <file>               Use <file> as initial ramdisk
+                        with arguments <args>
+ 0-9                    Boot preconfiguration 0-9 (list with 'l')
+aboot>~
+
+
+boot_osflags            console=ttyS0 root=/dev/nfs nfsroot=192.168.50.23:/alpha_gentoo_live nfsrootdebug ip=bootp
+boot_osflags            console=ttyS0 root=/dev/nfs nfsroot=192.168.50.23:/root_alpha nfsrootdebug ip=bootp
+boot_osflags            console=ttyS0 root=/dev/nfs nfsroot=192.168.50.23:/root_alpha rw nfsrootdebug ip=bootp

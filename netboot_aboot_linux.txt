@@ -1,0 +1,193 @@
+jumping to bootstrap code
+aboot: Linux/Alpha SRM bootloader version 1.0_pre20040408
+aboot: switching to OSF/1 PALcode version 1.92
+aboot: starting kernel network with arguments console=ttyS0
+[    0.000000] Linux version 6.7.7-gentoo-alpha (root@matoro-alphadev) (alpha-unknown-linux-gnu-gcc (Gentoo 13.2.1_p20240210 p13) 13.2.1 20240210, GNU ld (Gentoo 2.42 p3) 2.42.0) 4
+[    0.000000] Booting on Titan variation DEFAULT using machine vector TITAN from SRM
+[    0.000000] Major Options: EV67 VERBOSE_MCHECK
+[    0.000000] Command line: console=ttyS0
+[    0.000000] memcluster 0, usage 1, start        0, end      359
+[    0.000000] memcluster 1, usage 0, start      359, end   524279
+[    0.000000] memcluster 2, usage 1, start   524279, end   524288
+[    0.000000] 2048K Bcache detected; load hit latency 24 cycles, load miss latency 137 cycles
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000000000000-0x00000fffffffdfff]
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000000000-0x00000000ffffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x00000000ffffffff]
+[    0.000000] Kernel command line: console=ttyS0
+[    0.000000] Dentry cache hash table entries: 524288 (order: 9, 4194304 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 262144 (order: 8, 2097152 bytes, linear)
+[    0.000000] Sorting __ex_table...
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 520192
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 4139920K/4194304K available (6896K kernel code, 568K rwdata, 2516K rodata, 200K init, 159K bss, 54384K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] NR_IRQS: 80
+[    0.000976] Console: colour dummy device 80x25
+[    0.000976] printk: legacy console [ttyS0] enabled
+[    0.026367] Calibrating delay loop... 1987.32 BogoMIPS (lpj=969728)
+[    0.034179] pid_max: default: 32768 minimum: 301
+[    0.035156] Mount-cache hash table entries: 8192 (order: 3, 65536 bytes, linear)
+[    0.036132] Mountpoint-cache hash table entries: 8192 (order: 3, 65536 bytes, linear)
+[    0.038085] RCU Tasks Trace: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1.
+[    0.039062] Performance events: Supported CPU type!
+[    0.041015] devtmpfs: initialized
+[    0.042968] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1866466235866741 ns
+[    0.043945] futex hash table entries: 256 (order: -1, 6144 bytes, linear)
+[    0.044921] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.045898] audit: initializing netlink subsys (disabled)
+[    0.046874] ******* CONSOLE DATA LOG FOR CPU 0. *******
+[    0.046874] *** Error(s) were logged on a previous boot
+[    0.047851] *** ERROR HALT:
+[    0.047851]   CLASS 5, TYPE 3
+[    0.048828]   TIMESTAMP: 12/17/71 15:59:19
+[    0.049804] PROCESSING SUBPACKET 0
+[    0.050781]   ** Occurred on CPU 0:
+[    0.051757]   PChip 0 APERROR: 00300000046e8101
+[    0.052734]     No DEVSEL as PCI Master [Master Abort]
+[    0.053710]     Lost Error
+[    0.054687]       Command: 0x3 - I/O Write
+[    0.054687]       Address: 0x46e8
+[    0.055664] PROCESSING SUBPACKET 1
+[    0.056640]   ** REGATTA TYPE 8 SUBPACKET
+[    0.057617]   Titan PChip 0 Extended Frame
+[    0.058593]     00000000: 00010008000c0110    Subpacket Header
+[    0.059570]     00000008: 0000000002831411    P0_SCTL
+[    0.060546]     00000010: 000000000000000e    P0_SERREN
+[    0.061523]     00000018: 00000004c00000c2    P0_APCTL
+[    0.062499]     00000020: 00000000000007f6    P0_APERREN
+[    0.063476]     00000028: 0000000000000000    P0_AGPERREN
+[    0.064453]     00000030: 0000000000000000    P0_ASPRST
+[    0.065429]     00000038: 0000000000800000    P0_AWSBA0
+[    0.066406]     00000040: 0000000080000001    P0_AWSBA1
+[    0.067382]     00000048: 0000000000000000    P0_AWSBA2
+[    0.068359]     00000050: 0000000000000002    P0_AWSBA3
+[    0.069335]     00000058: 0000000000700000    P0_AWSM0
+[    0.070312]     00000060: 000000003ff00000    P0_AWSM1
+[    0.071289]     00000068: 0000000000000000    P0_AWSM2
+[    0.072265]     00000070: 0000000000000000    P0_AWSM3
+[    0.073242]     00000078: 0000000000000000    P0_ATBA0
+[    0.074218]     00000080: 0000000000000000    P0_ATBA1
+[    0.075195]     00000088: 0000000000000000    P0_ATBA2
+[    0.076171]     00000090: 0000000000000000    P0_ATBA3
+[    0.077148]     00000098: 00000004c10000c2    P0_GPCTL
+[    0.078124]     000000a0: 00000000000007f6    P0_GPERREN
+[    0.079101]     000000a8: 0000000000000000    P0_GSPRST
+[    0.080078]     000000b0: 0000000000800000    P0_GWSBA0
+[    0.081054]     000000b8: 0000000080000001    P0_GWSBA1
+[    0.083007]     000000c0: 0000000000000000    P0_GWSBA2
+[    0.083984]     000000c8: 0000000000000002    P0_GWSBA3
+[    0.084960]     000000d0: 0000000000700000    P0_GWSM0
+[    0.085937]     000000d8: 000000003ff00000    P0_GWSM1
+[    0.086914]     000000e0: 0000000000000000    P0_GWSM2
+[    0.087890]     000000e8: 0000000000000000    P0_GWSM3
+[    0.088867]     000000f0: 0000000000000000    P0_GTBA0
+[    0.089843]     000000f8: 0000000000000000    P0_GTBA1
+[    0.090820]     00000100: 0000000000000000    P0_GTBA2
+[    0.091796]     00000108: 0000000000000000    P0_GTBA3
+[    0.092773] *** 1 total error(s) logged
+[    0.092773] **** END OF CONSOLE DATA LOG FOR CPU 0 ****
+[    0.093749] PCI host bridge to bus 0000:00
+[    0.094726] pci_bus 0000:00: root bus resource [io  0x0000-0x1ffffff]
+[    0.095703] pci_bus 0000:00: root bus resource [mem 0x00000000-0x7fffffff]
+[    0.096679] pci_bus 0000:00: No busn resource found for root bus, will use [bus 00-ff]
+[    0.097656] pci 0000:00:07.0: [10b9:1533] type 00 class 0x060100
+[    0.098632] pci 0000:00:08.0: [9005:00cf] type 00 class 0x010000
+[    0.099609] pci 0000:00:08.0: reg 0x10: [io  0x1000-0x10ff]
+[    0.100585] pci 0000:00:08.0: reg 0x14: [mem 0x01080000-0x01080fff 64bit]
+[    0.101562] pci 0000:00:08.0: reg 0x30: [mem 0x01000000-0x0101ffff pref]
+[    0.102539] pci 0000:00:08.1: [9005:00cf] type 00 class 0x010000
+[    0.103515] pci 0000:00:08.1: reg 0x10: [io  0x1100-0x11ff]
+[    0.104492] pci 0000:00:08.1: reg 0x14: [mem 0x01081000-0x01081fff 64bit]
+[    0.105468] pci 0000:00:08.1: reg 0x30: [mem 0x010000-0x103ffffpre]
+[   0.10644] pci 000:0:0.0:[8086:109]type 00clas 0x02000
+[   0.10838] ci 000:00:9.0 reg 0x4: [io 0x100000x103f2fff]
+[    .10374] pc 000:00:090: eg 0x18 [mm 0x010000-0x105ffff
+[   0.11351] pc 000:00:090: upportsD1 2
+[   0.11234] ci 000:00:a.0 [886:1209 tye 00 clss 0x02000
+                                                        [    011381] pci 000:00:0a.: rg 0x10:[me 0x0108000-0x0083fff]
+                                                                                                                     [   0.114257]pci000:00:0a.: rg 0x14:[io 0x1004-0x007f]
+    0.1523] pi 0000:0:0.0:reg 0x1: [em x0160000-0010ffff]
+[    000:a.0 PME# sppotedfro D0 D1 2 Dhot
+                                         [    011940] pci000:00:0d.: [10b9522] tpe 00 cass0x001fa
+[   0.12117 pci 000:0:0d.0: Firwar Bug]: eg x10 invali BAR (cn't siz)
+    0.11093] pi 000:0:0d.0:[Firmwae Bug]:reg 0x1: ivald BAR (an' sie)
+[   0.22070] ci 000:00:d.0: [Frmwre ug] reg 0x18: nvalid AR can't sze)
+                                                                      [    012346]pci 000:000d.: [Firmare Bug: reg 0x1c:invalidBAR (ca't size
+[   0.12023] pc 0000:0:0d0: reg x20: [i  01000-0x100f]
+[   0.12499] pci 00000:d.0: leacy IDEquik: reg x10 [io  001f-0x1f7
+[    .126953 pci 000:00:0d0: legay IE qirk: re 0x4: io  0x0f6]
+                                                              [   0.12729] pci000:000d.: legac ID quirk: reg0x1: [o  0x010-00177]
+    0.1890] pi 0000:0:0.0:legacy DE uirk: rg 01c:[io  0x376
+[    .12882 pci_bu 0000:0: busn_es:[bus 00ff]end is updaed o 0
+[    .130859 PC hot bridg tobus0002:01
+                                      [    0131835] pcibus000:01: rot bs resouce io 0x40000000-0x41fffff] (bs adres [0x000-01ffffff)
+    0.1281] pi_bus 002:1: rootbusresurce [mm 040000000-047ffffff] bus addess[0x00000000x7fffff])
+[   .7 pc_bus 002:01: N busn rsouce foun fo rot bus, ill use[bu 01ff]
+[   013465] pci0002:0107.0: [14e4164] type 0 class 0x0000
+[    .13742] p 0002:0:070: reg x10 [mm 0x40220000-040202ffff 6bit]
+[    0136718]pci 0002:01:07.: rg 0x18:[mem 0x020000-0x4020fff 64bit]
+                                                                    [    013795] pci000:01:07.: PE# upporte frm D3hot
+                                                                                                                     [   0.13871]pci 000:0107.1: [4e4164] type 0 class0x00000
+[   0.13648] pci 002:01:071: reg x10: [mm 0x40240000-04024fff 64bit
+[   .140624 pc 002:01:01: reg x18 [mm 0x40250000-04025ffff 6bit
+[    .14601] pc 002:0:07.1: ME#supportd fom D3ho
+[    .14578 pci 002:01:0a0: 1002:472] ype 00 las 0x30000
+    0.1355] pci 002:1:0a.0:reg0x10: [em x40000000-x40fffff]
+[   0144531]pci000:01:0a.: reg 014:[io 0x4000100-0x000010f]
+[   0.15507] pi 0002:1:0.0:reg 0x1: [em x40060000-x402060ff]
+                                                            [    014684] pci 000:010a.: reg 030: [me 0x0200000-0x020fff prf]
+[   0.14740] ci 002:01:a.0 suppors D D2
+                                       [    0148437]pcibus 000:01 bun_res: bus01-ff] nd s udated t 01
+                                                                                                     [    0149413]pcibus 000:00 reource 4 0x000-0x1ffff]
+[   0.151367] ci_us 002:01:resourc 4 io  0x40000000-0x41ffffff]
+[    0.5426] audi: type=000audit(0046:1):stae=initializd auditenaled=0 rs=1
+[    0.58203] ci 00201:0a. vgaarb settin as boo VGA device                 [    0.15649]SCSI susysem nitialied
+                                                          [   0.15803] pci000:01:0a.: vgaar: bridge cotrol posibe
+    0.18203] pi 0002:01:0.0: vgaarb:VGA devce added: dcodes=i+mem,ows=io+me,loks=none
+                                                                                     [   0.15979]vgaarb:loaed
+[    0.61132] FS: Dis qutasdquot_66.0
+[   0162109]VFS Dquot-ach hash tbleenties 1024 (rde 0,8192 byes)
+                                                                [    0.170898] NET: Registered PF_INET protocol family
+[    0.17281] P ients hah tableentries: 6536 (ordr: , 54288 byes,linear)
+                                                                        [    0.177734] tcp_listen_portadr_hashhash tale ntres: 204 (order 1,1634 btes, liear)
+[   0.178710] Table-erturb hash tabe entries: 5536 (order 5,262144 ytes, lnea)
+   0.17968] TCP etabishd hsh tabl entrie: 32768(order6214 bytes liear)
+[    .180663 TC bid hash able enrie: 3768 (orer:6, 52428 btes linear
+[    0.183593] TCP: Hsh tabls confiure (establishd 3768bin 32768)
+                                                                 [   0.18470]UDP has tale ntries:204 (order 3,6556 bytes liear
+[    0.8653] NET:Regstered F_UIX/PF_LCALproocol faily36byts, inear)
+[   0.88476] ci 000:00:a.0 Fimware lft 100interruts nabed; disbligpci0000:0009.0: Frmwre eft e10 interrptsenabled diabling
+[   0.18945] PCI: LS 4 bytes, deault 64
+                                       [   0191406]Using eoch1900 fo rtc yer 7
+[    .19359] pltfom rc-alpha reisteredas tc0
+[    0.19532] orkingst: timetamp_bits=4 max_orer=19 bucketorder=0 UTC(6183352)
+[    0.19765] Blok layerSCS generi (bg) river vrsion 04 loaded (mjor 253)
+[    0.202148] Serial: 8250/16550 driver,4 ports IR sharin disabld
+[    0.204101] serial8250: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+[    0.206054] serial8250: ttyS1 at I/O 0x2f8 (irq = 3, base_baud = 115200) is a 16550A
+[    5.499997] scsi host0: Adaptec AIC7XXX EISA/VLB/PCI SCSI HBA DRIVER, Rev 7.0
+[    5.499997]         <Adaptec aic7899 Ultra160 SCSI adapter>
+[    5.499997]         aic7899: Ultra160 Wide Channel A, SCSI Id=7, 32/253 SCBs
+[    5.499997]
+[   14.999992] scsi host1: Adaptec AIC7XXX EISA/VLB/PCI SCSI HBA DRIVER, Rev 7.0
+[   14.999992]         <Adaptec aic7899 Ultra160 SCSI adapter>
+[   14.999992]         aic7899: Ultra160 Wide Channel B, SCSI Id=7, 32/253 SCBs
+[   14.999992]
+[   15.999991] random: crng init done
+[   18.822255] NET: Registered PF_INET6 protocol family
+[   18.823232] Segment Routing with IPv6
+[   18.825185] In-situ OAM (IOAM) with IPv6
+[   18.838857] /dev/root: Can't open blockdev
+[   18.839834] VFS: Cannot open root device "" or unknown-block(8,2): error -6
+[   18.840810] Please append a correct "root=" boot option; here are the available partitions:
+[   18.841787] List of all bdev filesystems:
+[   18.842763]  ext3
+[   18.842763]  ext2
+[   18.843740]  ext4
+[   18.844716]
+[   18.846670] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(8,2)
+[   18.846670] Rebooting in 120 seconds..

@@ -1,0 +1,69 @@
+code V1.92-7
+
+*** keyboard not plugged in...
+starting console on CPU 0
+initialized idle PCB
+initializing semaphores
+initializing heap
+initial heap 240c0
+memory low limit = 1c6000 heap = 240c0, 17fc0
+initializing driver structures
+initializing idle process PID
+initializing file system
+initializing timer data structures
+lowering IPL
+
+Disk Fan Speed Threshold Fatal
+CPU 0 speed is 1000 MHz
+create dead_eater
+create poll
+create timer
+create powerup
+access NVRAM
+4096 MB of System Memory
+Testing Memory
+...
+probe I/O subsystem
+starting drivers
+
+Error detected by Pchip 0
+    APERROR = 00300000046e8100
+            No Devsel
+
+Error detected by Pchip 0
+    APERROR = 00300000046e8100
+            No Devsel
+
+Error detected by Pchip 0
+    APERROR = 0030000004ae8100
+            No Devsel
+	    entering idle loop
+
+*** Error - Fan Sensor 13 - Lower Warning Threshold Failure ***
+
+*** Error - Fan Sensor 13 - Lower Fatal Threshold Failure ***
+
+*** WARNING: - Fan Fault LED illuminated ***
+
+*** WARNING: Check RMC System Event Log ***
+
+*** WARNING: - System Fault LED illuminated ***
+
+*** WARNING: Check RMC System Event Log ***
+initializing GCT/FRU at 1fa000
+Initializing ega egb dqa dqb eia eib pka pkb
+Memory Testing and Configuration Status
+  Array       Size       Base Address    Intlv Mode
+  ---------  ----------  ----------------  ----------
+      0       2048Mb     0000000000000000    2-Way
+          2       2048Mb     0000000080000000    2-Way
+
+     4096 MB of System Memory
+     Testing the System
+     Testing the Network
+     AlphaServer DS15 Console V7.3-2, built on Feb 27 2007 at 13:07:33
+     >>>
+     >>>
+     >>>
+     >>>
+     >>>~
